@@ -1,0 +1,246 @@
+body {
+	font-family: sans-serif;
+	font-size: 14px;
+	color: #333;
+	padding: 50px;
+}
+
+.automator {
+	margin: 0 auto 1em;
+	padding: 1em 1em 0;
+	max-width: 40em;
+	position: relative;
+	background: #F9F9F9;
+	border: solid 1px #CCC;
+
+	-webkit-border-radius: 1em;
+	-moz-border-radius: 1em;
+	-ie-border-radius: 1em;
+	-o-border-radius: 1em;
+	border-radius: 1em;
+
+	-webkit-box-shadow: 0 0 5px #CCC inset;
+	-moz-box-shadow: 0 0 5px #CCC inset;
+	-ie-box-shadow: 0 0 5px #CCC inset;
+	-o-box-shadow: 0 0 5px #CCC inset;
+	box-shadow: 0 0 5px #CCC inset;
+}
+
+.automator .item {
+	margin: 0 0 1em;
+	padding: 0;
+	border: solid 1px #999;
+	list-style: none;
+	background: #F6F6F6;
+	position: relative;
+
+	-webkit-border-radius: 0.5em;
+	-moz-border-radius: 0.5em;
+	-ie-border-radius: 0.5em;
+	-o-border-radius: 0.5em;
+	border-radius: 0.5em;
+
+	-webkit-box-shadow: 0.125em 0.125em 0.25em #CCC;
+	-moz-box-shadow: 0.125em 0.125em 0.25em #CCC;
+	-ie-box-shadow: 0.125em 0.125em 0.25em #CCC;
+	-o-box-shadow: 0.125em 0.125em 0.25em #CCC;
+	box-shadow: 0.125em 0.125em 0.25em #CCC;
+}
+
+.automator .item:before,
+.automator .item:after {
+	content: "";
+	margin: 0 0 0 -0.75em;
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	border: solid 0.75em;
+	border-bottom-width: 0;
+	border-color: #999 transparent transparent;
+	z-index: 2;
+}
+
+.automator .item:after {
+	border-top-color: #F6F6F6;
+	margin-top: -1px;
+}
+
+.automator .item:last-child:before,
+.automator .item:last-child:after,
+.automator .dragging:before,
+.automator .dragging:after {
+	display: none;
+}
+
+.automator .ghost {
+	visibility: hidden;
+	border: none;
+}
+
+.automator .dragging {
+	z-index: 3;
+}
+
+.automator .closed:after {
+	border-top-color: #DDD;
+}
+
+.automator .title {
+	background: #DDD;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#EEE), color-stop(0.45, #EFEFEF), color-stop(0.55, #DDD), to(#DDD));
+	background-image: -webkit-linear-gradient(top, #EEE, #EFEFEF 45%, #DDD 55%, #DDD);
+	background-image: -moz-linear-gradient(top, #EEE, #EFEFEF 45%, #DDD 55%, #DDD);
+	background-image: -ie-linear-gradient(top, #EEE, #EFEFEF 45%, #DDD 55%, #DDD);
+	background-image: -o-linear-gradient(top, #EEE, #EFEFEF 45%, #DDD 55%, #DDD);
+	background-image: linear-gradient(top, #EEE, #EFEFEF 45%, #DDD 55%, #DDD);
+	padding: 0.5em 2em;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px #FFF;
+	cursor: move;
+	cursor: -moz-grab;
+	cursor: -webkit-grab;
+	cursor: grab;
+	line-height: 1em;
+	border-bottom: solid 1px #999;
+
+	-webkit-border-radius: 0.5em 0.5em 0 0;
+	-moz-border-radius: 0.5em 0.5em 0 0;
+	-ie-border-radius: 0.5em 0.5em 0 0;
+	-o-border-radius: 0.5em 0.5em 0 0;
+	border-radius: 0.5em 0.5em 0 0;
+}
+
+.automator .dragging .title {
+	cursor: grabbing;
+	cursor: -moz-grabbing;
+	cursor: -webkit-grabbing;
+}
+
+.automator .title:before {
+	content: "";
+	position: absolute;
+	bottom: 100%;
+	left: 50%;
+	width: 20px;
+	height: 10px;
+	background: #EEE;
+	margin: 0 0 0 -11px;
+	border-bottom-width: 0;
+	border: solid 1px #999;
+	border-bottom-width: 0;
+	z-index: 1;
+
+	-webkit-border-radius: 0.75em 0.75em 0 0;
+	-moz-border-radius: 0.75em 0.75em 0 0;
+	-ie-border-radius: 0.75em 0.75em 0 0;
+	-o-border-radius: 0.75em 0.75em 0 0;
+	border-radius: 0.75em 0.75em 0 0;
+}
+
+.automator .item:first-child .title:before,
+.automator .dragging .title:before {
+	display: none;
+}
+
+.automator .placeholder {
+	color: #999;
+
+	-webkit-transition: color 0.25s;
+	-moz-transition: color 0.25s;
+	-ie-transition: color 0.25s;
+	-o-transition: color 0.25s;
+	transition: color 0.25s;
+}
+
+.automator .placeholder:hover,
+.automator .placeholder:focus,
+.automator .placeholder:active {
+	color: #333;
+}
+
+.automator .placeholder .title {
+	cursor: pointer;
+}
+
+.automator .closed .title,
+.automator .placeholder .title {
+	border-bottom: solid 1px #999;
+
+	-webkit-border-radius: 0.5em;
+	-moz-border-radius: 0.5em;
+	-ie-border-radius: 0.5em;
+	-o-border-radius: 0.5em;
+	border-radius: 0.5em;
+}
+
+.automator .content {
+	min-height: 5em;
+	background: -webkit-gradient(linear, left top, left bottom, from(#BBB), to(#F6F6F6));
+	background: -webkit-linear-gradient(top, #BBB, #F6F6F6 0.25em);
+	background: -moz-linear-gradient(top, #BBB, #F6F6F6 0.25em);
+	background: -ie-linear-gradient(top, #BBB, #F6F6F6 0.25em);
+	background: -o-linear-gradient(top, #BBB, #F6F6F6 0.25em);
+	background: linear-gradient(top, #BBB, #F6F6F6 0.25em);
+	background-size: 100% 0.25em;
+	background-repeat: repeat-x;
+	overflow: hidden;
+
+	-webkit-border-radius: 0 0 0.5em 0.5em;
+	-moz-border-radius: 0 0 0.5em 0.5em;
+	-ie-border-radius: 0 0 0.5em 0.5em;
+	-o-border-radius: 0 0 0.5em 0.5em;
+	border-radius: 0 0 0.5em 0.5em;
+}
+
+.automator .closed .content {
+	display: none;
+}
+
+.automator .add,
+.automator .toggle,
+.automator .remove {
+	position: absolute;
+	top: 0.4em;
+	left: 0.4em;
+	width: 1.2em;
+	height: 1.2em;
+	text-align: center;
+	line-height: 1.2em;
+	text-shadow: 1px 1px 1px #FFF;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.automator .add span,
+.automator .toggle span,
+.automator .remove span {
+	position: absolute;
+	left: -9999em;
+}
+
+.automator .add:before {
+	content: "+";
+	font-weight: bold;
+}
+
+.automator .toggle:before {
+	content: "\25BE"; /* small down arrow */
+}
+
+.automator .closed .toggle:before {
+	content: "\25B8"; /* small right arrow */
+}
+
+.automator .remove {
+	left: auto;
+	right: 0.4em;
+	background: #999;
+	color: #FFF;
+	border-radius: 0.75em;
+	line-height: 1em;
+	text-shadow: none;
+}
+
+.automator .remove:before {
+	content: "\00D7";
+}
